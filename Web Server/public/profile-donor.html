@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <title>Profile</title>
+        <link rel="icon" href="Pics/Donation.png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+    <script src="jquery-1.8.2.min.js"></script>
+
+    <script>
+      function loadFile1(ref) {
+        var image = document.getElementById('prevIdProof');
+        image.src = URL.createObjectURL(ref.files[0]);
+      };
+
+      function loadFile2(ref) {
+        var image = document.getElementById('prevProfilePic');
+        image.src = URL.createObjectURL(ref.files[0]);
+      };
+
+      // $(document).ready(function(){
+      //   $("#btnSave").click(function(){
+      //           var email = $("#inputEmail").val();
+      //           var name = $("#inputName").val();
+      //           var phone = $("#inputPhone").val();
+      //           var address = $("#inputAddress").val();
+      //           var city = $("#inputCity").val();
+      //           var proofId = $("#inputId").val();
+      //           var timings = $("#inputTime").val();
+      //           var IdProof = $("#inputidpic").val();
+      //           var ProfilePic = $("#inpputProfilePic").val();
+
+      //           var url= "/profile?inputEmail=" + email + "&inputName=" +name + "&inputPhone=" + phone + "&inputAddress=" + address + "&inputCity=" + city + "&inputId=" + proofId + "&inputTime=" + timings + "&inputidpic=" + IdProof + "&inputProfilePic=" + ProfilePic;
+      //           $.get(url, function (respKuch) {
+      //               alert(respKuch);
+      //     });
+      //   })
+      // })
+    </script>
+    </head>
+    <body>
+        <!--=======NavBar========-->
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+              <span class="navbar-brand mb-0 h1">Profile Page</span>
+            </div>
+          </nav>
+
+        <!--=======Profile=======-->
+        <div class="container" style="margin-top:20px;">
+            <form method="post" class="row g-3"  enctype="multipart/form-data">
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Email</label>
+                  <input type="email" class="form-control" required name="inputEmail" id="inputEmail" placeholder="Your Email">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="inputEmail" class="form-label">&nbsp;</label>
+                    <button type="button" class="btn btn-outline-dark form-control" id="btnSearch">Search</button>
+                </div>
+
+                <div class="col-6">
+                  <label for="inputName" class="form-label">Name</label>
+                  <input type="text" class="form-control" required name="inputName" id="inputName" placeholder="Your Name">
+                </div>
+
+                <div class="col-6">
+                    <label for="inputPhone" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" required name="inputPhone" id="inputPhone" placeholder="Your Number">
+                  </div>
+
+                <div class="col-7">
+                  <label for="inputAddress" class="form-label">Address</label>
+                  <input type="text" class="form-control" required name="inputAddress" id="inputAddress" placeholder="Your Address">
+                </div>
+
+                <div class="col-5">
+                    <label for="inputCity" class="form-label">City</label>
+                    <input type="text" name="inputCity"  id="inputCity" required  list="dropdown">
+                        <datalist id="dropdown" >
+                            <option value="Ambala">Ambala</option>
+                            <option value="Amritsar">Amritsar</option>
+                            <option value="Bathinda">Bathinda</option>
+                            <option value="Bhucho">Bhucho</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Ludhiana">Ludhiana</option>
+                            <option value="Patiala">Patiala</option>
+                            <option value="Mohali">Mohali</option>
+                            <option value="Moosa">Moosa</option>
+                            <option value="Talwandi Saabo">Talwandi Saabo</option>
+                        </datalist>
+                  </div>
+          
+                <div class="col-md-6">
+                  <label for="inputId" class="form-label">Select Id Proof</label>
+                  <select name="inputId" id="inputId" required class="form-select">
+                    <option selected>Choose...</option>
+                    <option value="Aadhar">Aadhar Card</option>
+                    <option value="Pan Card">Pan Card</option>
+                    <option value="Driving Licence">Driving Licence</option>
+                    <option value="Voter Card">Voter Card</option>
+                    <option value="Ration Card">Ration Card</option>
+                    <option value="Passport">Passport</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputTime" class="form-label">Contact Time</label>
+                  <input type="text" class="form-control" required name="inputTime" id="inputTime">
+                </div>
+
+               <!--File Upload-->
+                <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label for="inputidpic" class="form-label">Select ID</label>
+                    <input class="form-control"type="file" name="inputidpic" required id="inputidpic" accept=".jpg, .jpeg, .png, .pdf"  onchange="loadFile1(this);">
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="inputProfilePic" class="form-label">Select Profile Pic</label>
+                    <input class="form-control" type="file" name="inputProfilePic" required id="inputProfilePic" accept=".jpg, .jpeg, .png, .pdf" onchange="loadFile2(this);">
+                  </div>
+
+                  <div class="col-md-6">
+                    <img id="prevIdProof" src="Pics/ProfilePicBG.jpg" style="margin-top: 10px;" width="100" height="100" alt="">
+                  </div>
+
+                  <div class="col-md-6">
+                    <img id="prevProfilePic" src="Pics/ProfilePicBG.jpg" style="margin-top: 10px;" width="100" height="100" alt="">
+                  </div>
+                </div>
+              
+                <div class="col-md-2">
+                  <label for="btnSave" class="form-label">&nbsp;</label>
+                  <button type="submit" formaction="/profile-process" class="btn btn-outline-dark form-control" id="btnSave">Save</button>
+                </div>
+
+                <div class="col-md-2">
+                  <label for="btnUpdate" class="form-label">&nbsp;</label>
+                  <button type="submit" class="btn btn-outline-dark form-control" id="btnUpdate">Update</button>
+                </div>
+              </form>
+        </div>  
+    </body>
+</html>

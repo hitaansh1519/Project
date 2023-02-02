@@ -1,0 +1,358 @@
+<html>
+
+<head>
+    <title>Somke On Water</title>
+    <link rel="icon" href="Pics/Donation.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+    <script src="jquery-1.8.2.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#btnsignup").click(function () {
+
+                var email = $("#email").val();
+                var password = $("#password").val()
+                var user = $("#user").val()
+                var url = "/chkEmailKuch?email=" + email + "&password=" + password + "&user=" + user;   //   var url="/chkEmailKuch?txtEmail=" + $(this).val();
+                $.get(url, function (respKuch) {
+                    alert(respKuch);
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#email").blur(function () {
+
+                //AJAX request Firing
+                var url = "/chkEmail?email=" + $("#email").val();
+                $.get(url, function (respKuchStr) {
+
+                    $("#spEmail").html(respKuchStr);
+                });
+
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-dark bg-dark ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="Pics/Donation1.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                    <font face="courier new" size="5" >Smoke On Water</font>
+                </a>
+                <!-- <span class="navbar-brand mb-0 h1">Smoke On Water</span> -->
+                <!--============================================================SignUp Button=====================================================================-->
+
+                <button type="button" style=" cursor: pointer;" class="btn btn-outline-light" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Register</button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="email" class="col-form-label">Email:</label>
+                                        <input type="email" required class="form-control" id="email">
+                                        <span id="spEmail" style="color:red "></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="col-form-label">Password:</label>
+                                        <input type="password" required class="form-control" id="password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="select" class="col-form-label">User-Type:</label>
+                                        <select required class="form-select" aria-label="Default select example"
+                                            id="user">
+                                            <option selected value="Donor">Donor</option>
+                                            <option value="Needy">Needy</option>
+                                            <option value="Admin">Admin</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" id="btnsignup">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--============================================================LogIn Button=====================================================================-->
+
+                <button type="button" style=" cursor: pointer;" class="btn btn-outline-light" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal1" data-bs-whatever="@fat">LogIn</button>
+
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">LogIn</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">Email:</label>
+                                        <input type="email" required class="form-control" id="loginemail">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="col-form-label">Password:</label>
+                                        <input type="password" required class="form-control" id="loginpassword">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" value="btnlogin">LogIn</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <!--=================================Carousel======================================-->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="Pics/Carousel2.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="Pics/Carousel1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="Pics/Carousel3.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!--Our Services-->
+        <center>
+            <h1 class="display-5">Our Services</h1>
+        </center>
+
+        <!--Cards-->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 shadow-lg p-3 mb-5 bg-body rounded">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="Pics/raka.jpg" class="img-fluid rounded" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <center>
+                                    <h5 class="card-title">Donate Medicines</h5>
+                                    <p class="card-text">To the world you may be one person but to one person you may be
+                                        the world.</p>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 shadow-lg p-3 mb-5 bg-body rounded">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="Pics/raka.jpg" class="img-fluid rounded" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <center>
+                                    <h5 class="card-title">Get Free Medicines</h5>
+                                    <p class="card-text">If you are having hard time feel free to ask for help from
+                                        people who are
+                                        willing to help you.</p>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 shadow-lg p-3 mb-5 bg-body rounded">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="Pics/raka.jpg" class="img-fluid rounded" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <center>
+                                    <h5 class="card-title">Mission</h5>
+                                    <p class="card-text">Giving is not just about making a donation. It is about making
+                                        a difference.</p>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!--Reach Us-->
+        <center>
+            <h1 class="display-5">Reach Us</h1>
+
+            <div class="container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110335.77118055351!2d74.88864662332857!3d30.208751535342714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39173297173abbcd%3A0xa00033c0a58a5ac8!2sBathinda%2C%20Punjab!5e0!3m2!1sen!2sin!4v1658462925373!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </center>
+
+        <hr>
+
+        <center>
+            <h1 class="display-5">Meet The Developers</h1>
+        </center>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 shadow-lg p-3 mb-5 bg-body rounded">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="Pics/Me 1.jpeg" class="img-fluid rounded" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <center>
+                                    <h5 class="card-title">Developed By Hitaansh Maheshwary</h5>
+                                </center>
+                                <p class="card-text">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">1st Year Student</li>
+                                    <li class="list-group-item">Persuing my Batchelor's Of Engineering from Chandigarh
+                                        University.</li>
+                                    <li class="list-group-item">18 years old</li>
+                                    <li class="list-group-item">To know more about me follow me on Instagram.<font>
+                                            <a href="https://www.instagram.com/hitaansh_1519/" target="_blank"><img
+                                                    height="50" width="50 " src="Pics/instagram.png"></a>
+                                        </font>
+                                    </li>
+                                </ul>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 shadow-lg p-3 mb-5 bg-body rounded">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="Pics/Rajesh Sir.jpeg" class="img-fluid rounded" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <center>
+                                    <h5 class="card-title">Under The Guidance Of Mr Rajesh Bansal</h5>
+                                </center>
+                                <p class="card-text">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Author Of Real Java</li>
+                                    <li class="list-group-item">Teacher(By Profession)</li>
+                                    <li class="list-group-item">Soon going to file a PIL against loud bullet silencers.
+                                    </li>
+                                    <li class="list-group-item">Teaches different programming laguages i.e Java, C/C++,
+                                        Python(ML), Full Stack Web Dev, Data Structures etc.</li>
+                                    <li class="list-group-item">Ache Sir Hain</li>
+                                </ul>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Footer-->
+        <footer class="bg-dark text-center text-white">
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+              <!-- Section: Social media -->
+              <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+          
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+          
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                  ><i class="fab fa-google"></i
+                ></a>
+          
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+          
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+          
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                  ><i class="fab fa-github"></i
+                ></a>
+              </section>
+              <!-- Section: Social media -->
+            </div>
+            <!-- Grid container -->
+          
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+              © 2022 Copyright:
+              <a class="text-white" href="https://SmokeOnWater.com/">Smoke On Water</a>
+            </div>
+            <!-- Copyright -->
+          </footer>
+    </div>
+</body>
+
+</html>

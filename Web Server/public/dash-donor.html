@@ -1,0 +1,154 @@
+<html>
+
+<head>
+    <title>Donor Page</title>
+    <link rel="icon" href="Pics/Donation.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+    <script src="jquery-1.8.2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#btnUpdate").click(function () {
+
+                var email = $("#email").val();
+                var password = $("#password").val()
+                var new_password = $("#new_password").val()
+                var url = "/update?email=" + email + "&password=" + password + "&new_password=" + new_password;   //   var url="/chkEmailKuch?txtEmail=" + $(this).val();
+                $.get(url, function (respKuch) {
+                    alert(respKuch);
+                });
+            });
+
+            // $("#btnLogout")
+        });
+    </script>
+
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1"><img src="Pics/Donation1.png" alt="" width="30" height="24"
+                class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="#">Dash Donor</a>
+        </div>
+    </nav>
+
+    <!--CARDS-->
+
+    <div class="container">
+        <div class="row">
+            <!--Card1-->
+            <div class="col-md-3" style="margin-top:20px;">
+                <div class="shadow-lg p-3 mb-5 bg-body rounded ">
+                    <img src="Pics/raka.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <center><h5 class="card-title">Profile</h5></center>
+                        <p class="card-text">After clicking on the button given below you will be arive at the Profile Page</p>
+                        <center><a href="/profile" class="btn btn-outline-dark">Profile</a></center>
+                    </div>
+                </div>
+            </div>
+
+            <!--Card2-->
+            <div class="col-md-3" style="margin-top:20px;">
+                <div class="shadow-lg p-3 mb-5 bg-body rounded">
+                    <img src="Pics/raka.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <center><h5 class="card-title">Donate-Medicines</h5></center>
+                        <p class="card-text">To the world you may be one person but to one person you may be
+                            the world.</p>
+                        <center><a href="/avail-medicine" class="btn btn-outline-dark">Donate Medecines</a></center>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Card3-->
+            <div class="col-md-3" style="margin-top:20px;">
+                <div class="shadow-lg p-3 mb-5 bg-body rounded">
+                    <img src="Pics/raka.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <center><h5 class="card-title">Medicine Manager</h5></center>
+                        <p class="card-text">💊 💊 💊 💊 -----------Manage your donated medicines.----------⚕️ ⚕️ ⚕️ ⚕️</p>
+                        <center><a href="/donor-med-manager" class="btn btn-outline-dark">Medicine Manager</a></center>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Card4-->
+            <div class="col-md-3" style="margin-top:20px;">
+                <div class="shadow-lg p-3 mb-5 bg-body rounded">
+                    <img src="Pics/raka.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <center><h5 class="card-title">Setting</h5></center>
+                        <p class="card-text">Thinking to update your password. Well I have a good news for you. Click on the button given below.</p>
+                        <!-- Button trigger modal -->
+                        <center><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Setting
+                            </button></center>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Update Our Password</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="email" class="col-form-label">Email:</label>
+                                                <input type="email" required class="form-control" id="email">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="password" class="col-form-label">Old Password:</label>
+                                                <input type="password" required class="form-control" id="password">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="password" class="col-form-label">New Password:</label>
+                                                <input type="password" required class="form-control" id="new_password">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-dark"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-outline-dark" id="btnUpdate">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Card5-->
+            <center>
+            <div class="col-md-3" style="margin-top:20px;">
+                <div class="shadow-lg p-3 mb-5 bg-body rounded">
+                    <img src="Pics/raka.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <center><h5 class="card-title">Log Out</h5></center>
+                        <p class="card-text">Kya hi keroge log out kerke, but agar phir bhi kerna hai hai to click the button below.</p>
+                        <center><a href="/index" class="btn btn-outline-dark">LogOut</a></center>
+                    </div>
+                </div>
+            </div>
+        </center>
+        </div>
+    </div>
+</body>
+
+</html>
