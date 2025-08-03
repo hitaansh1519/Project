@@ -1,0 +1,248 @@
+1. Open xampp.
+
+2. Start apache.
+
+3. Mysql listen the request at 3306 port.
+
+4. Go to admin.
+
+5. Create file of DBMS from new(at top right corner).
+
+6.Create table(name of table and number of corner).
+
+7.Primary Key(the value of coloums can't be re and can't be left empty).
+
+8. No space in coloum name.
+
+for working in query go in sql tab.
+
+1. Create table 
+
+    create table trainees(rollno int primary key, sname varchar(20), 
+
+
+
+create table trainees(rollno int primary key,sname varchar(20),per float, branch varchar(5),dob date)
+
+insert into trainees values(101,'Aman',87.7,'cse',CURRENT_DATE())
+
+select * from trainees
+
+
+select rollno,per from trainees
+
+select * from trainees order by per DESC limit 2
+
+insert into trainees(rollno,sname,dob) values(107,'Gabbar',CURRENT_DATE())
+
+update trainees set branch='cse', per=54 where rollno=107
+
+update trainees set per=per+5 where per<=90
+//to del all records
+delete from trainees 
+
+delete from trainees where rollno=107
+
+//to remove table itself with all records
+drop table trainees
+
+//to avoid duplication in data in colm
+select distinct branch from trainees
+
+select * from trainees where sname='Aman' and branch='ece'
+
+select * from trainees where branch='ece' or branch='mech'
+select * from trainees where branch in ('mech','ece')
+select * from trainees where branch<>'mech'
+
+
+select * from trainees where sname like 'Am%'
+(here % rep 0 or more chars)
+
+select * from trainees where sname like '%am%'
+
+select * from trainees where sname like '____'
+(_ means one char)
+
+SELECT avg(per) as 'Avg Per',sum(per),max(per),min(per) FROM `trainees`
+
+
+
+Write a program in PL/SQL to print the value of a variable inside and outside a loop using LOOP EXIT statement.
+
+DECLARE
+  n int := 8;
+BEGIN
+  LOOP
+    DBMS_OUTPUT.PUT_LINE('The value of n is:' ||n);
+    n := n - 1; 
+    EXIT WHEN n <1 ;
+  END LOOP;
+    DBMS_OUTPUT.PUT_LINE('The value of n outside is:' || n);
+END;
+/
+
+create table customers (
+ID number(5),
+Name varchar(30),
+Age number(5),
+Address varchar(30),
+Salary number(5)
+);
+insert into customers VALUES (1,'Ramesh', 32, 'Ahmedabad', 2000.00);
+insert into customers VALUES (2,'Khilan', 25, 'Delhi', 1500.00);
+insert into customers VALUES (3,'kaushik', 23, 'Kota', 2000.00);
+insert into customers VALUES (4,'Chaitali', 25, 'Mumbai', 6500.00);
+insert into customers VALUES (5,'Hardik', 27, 'Bhopal', 8500.00);
+insert into customers VALUES (6, 'Komal', 22, 'MP', 4500.00);
+select * from customers;
+
+--CURSORS--
+declare
+    total_row int(2);
+begin
+    update customers
+    set salary = salary + 500;
+    if sql%notfound then
+    dbms_output.put_line('no customers selected');
+    elsif sql%found then
+    total_row :=sql%rowcount;
+    dbms_output.put_line(total_row || 'customers selected');
+    end if;
+end;
+/
+
+--Write a PL/SQL program to display the information of a given department number--
+--Expliscit Coursor--
+
+declare
+cursor customer_data is
+select ID, Name, salary from customers;
+
+Ecode customers.ID%type;
+Ename customers.Name%type;
+salary customers.salary%type;
+
+BEGIN
+OPEN customer_data
+LOOP
+Fetch customer_data into Ecode, Ename, salary;
+EXIT when customer_data%notfound;
+dbms_output.put_line(Ecode||' '|NAME|''||salary);
+END LOOP;
+Close customer_data;
+END;
+/
+
+
+
+
+
+
+create table customers (
+ID number(5),
+Name varchar(30),
+Age number(5),
+Address varchar(30),
+Salary number(5)
+);
+insert into customers VALUES (1,'Ramesh', 32, 'Ahmedabad', 2000.00);
+insert into customers VALUES (2,'Khilan', 25, 'Delhi', 1500.00);
+insert into customers VALUES (3,'kaushik', 23, 'Kota', 2000.00);
+insert into customers VALUES (4,'Chaitali', 25, 'Mumbai', 6500.00);
+insert into customers VALUES (5,'Hardik', 27, 'Bhopal', 8500.00);
+insert into customers VALUES (6, 'Komal', 22, 'MP', 4500.00); 
+select * from customers;
+ 
+delete customers;
+---update 100--times --loop---PL/SQL
+ 
+---update the table and increase the salary of each customer by 500 and use the SQL%ROWCOUNT
+---- attribute to determine the number of rows affected
+ 
+---implicit cursors
+ 
+
+declare 
+total_rows number(4);
+ 
+begin
+ 
+UPDATE customers 
+set salary = salary + 500;
+ 
+if sql%notfound then
+dbms_output.put_line('no customers salary is updated or no record found');
+elsif sql%found then
+ total_rows := sql%rowcount;
+dbms_output.put_line(total_rows ||' are updated successfully in the table');
+---no record
+ 
+/*%found-----if row is effected---true
+%notfound----not effecting any row --true (where unstatisfactor or no record)
+%rowcount----*/
+ 
+--record
+end if;
+end;
+/
+
+
+
+create table customers (
+ID number(5),
+Name varchar(30),
+Age number(5),
+Address varchar(30),
+Salary number(5)
+);
+insert into customers VALUES (1,'Ramesh', 32, 'Ahmedabad', 2000.00);
+insert into customers VALUES (2,'Khilan', 25, 'Delhi', 1500.00);
+insert into customers VALUES (3,'kaushik', 23, 'Kota', 2000.00);
+insert into customers VALUES (4,'Chaitali', 25, 'Mumbai', 6500.00);
+insert into customers VALUES (5,'Hardik', 27, 'Bhopal', 8500.00);
+insert into customers VALUES (6, 'Komal', 22, 'MP', 4500.00); 
+select * from customers;
+ 
+ 
+
+DECLARE 
+   c_id customers.Id%type;
+   c_name customers.Name%type;
+   c_addr customers.Address%type;
+   CURSOR c_customers is 
+      SELECT id, name, address FROM customers; 
+
+BEGIN 
+   OPEN c_customers; 
+
+   LOOP 
+   FETCH c_customers into c_id, c_name, c_addr; 
+      EXIT WHEN c_customers%notfound; 
+
+      dbms_output.put_line('customer having id '||c_id || ' ' || c_name || ' is living in  ' || c_addr); 
+   END LOOP; 
+   CLOSE c_customers; 
+END; 
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

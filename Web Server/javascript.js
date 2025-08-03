@@ -185,6 +185,12 @@ app.get("/chkEmailKuch", function(req,res){
     })
 })
 
+//LogIn
+app.get("chkEmailPass", function(req,res){
+    var dataAry = [req.query.email, req.query.password];
+    
+})
+
 
 //Update
 app.get("/update",function(req,resp)

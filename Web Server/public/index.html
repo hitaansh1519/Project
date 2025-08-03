@@ -43,6 +43,19 @@
 
         });
     </script>
+
+    <script>
+        $(document).ready(function (){
+            $("#btnlogin").click(function (){
+                var email = $("#email").val();
+                var password = $("#password").val();
+                var Url = "/chkEmailPass?email=" + email + "&password=" + password;
+                $.get(Url, function (respKuch){
+                    alert(respKuch);
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -242,12 +255,12 @@
         <hr>
 
         <center>
-            <h1 class="display-5">Meet The Developers</h1>
+            <h1 class="display-5">Meet The Developer</h1>
         </center>
 
         <div class="container">
             <div class="row">
-                <div class="col-md-6 shadow-lg p-3 mb-5 bg-body rounded">
+                <div class="col-md-8 shadow-lg p-3 mb-5 bg-body rounded">
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img src="Pics/Me 1.jpeg" class="img-fluid rounded" alt="...">
@@ -276,7 +289,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 shadow-lg p-3 mb-5 bg-body rounded">
+                <!-- <div class="col-md-6 shadow-lg p-3 mb-5 bg-body rounded">
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img src="Pics/Rajesh Sir.jpeg" class="img-fluid rounded" alt="...">
@@ -301,7 +314,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
